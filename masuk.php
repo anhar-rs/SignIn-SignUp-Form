@@ -1,10 +1,29 @@
+<?php 
+require 'function.php';
+
+if( isset($_POST["daftar"]) ) {
+
+	if( registrasi($_POST) > 0 ) {
+		echo "<script>
+				alert('user baru berhasil ditambahkan!');
+			  </script>";
+	} else {
+		echo mysqli_error($conn);
+	}
+
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SignIn&SignUp</title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -15,17 +34,17 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" class="sign-in-form">
+          <form action="dashboard.html" class="sign-in-form" method="POST">
             <h2 class="title">Sign In</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username"  name="username"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password" />
             </div>
-            <input type="submit" value="Login" class="btn solid" />
+            <button type="submit" name="masuk" class="btn solid">Sign In</button>
 
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
@@ -45,21 +64,21 @@
           </form>
 
 
-          <form action="" class="sign-up-form">
+          <form action="dashboard.html" class="sign-up-form" method="POST">
             <h2 class="title">Sign Up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="username" >
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" name="email" >
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password" >
             </div>
-            <input type="submit" value="Sign Up" class="btn solid" />
+              <button type="submit" name="daftar" class="btn solid">Sign Up</button>
 
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
@@ -87,7 +106,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
                 <button class="btn transparent" id="sign-up-btn">Sign Up</button>
             </div>
-            <img src="./img/log.svg" class="image" alt="">
+            <img src="./img/1.png" class="image" alt="">
         </div>
 
         <div class="panel right-panel">
@@ -96,7 +115,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
                 <button class="btn transparent" id="sign-in-btn">Sign In</button>
             </div>
-            <img src="./img/register.svg" class="image" alt="">
+            <img src="./img/2.png" class="image" alt="">
         </div>
       </div>
     </div>
